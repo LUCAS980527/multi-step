@@ -16,12 +16,12 @@ export function Step() {
   }
   return (
     <div>
-      {page === 1 && <Page1 increaseStep={increaseStep} />}
+      {page === 3 && <Page1 increaseStep={increaseStep} />}
       {page === 2 && (
         <Page2 increaseStep={increaseStep} reduceStep={reduceStep} />
       )}
-      {page === 3 && (
-        <Page3 increaseStep={increaseStep} reduceStep={reduceStep} />
+      {page === 1 && (
+        <Page3 increaseStep={increaseStep} reduseStep={reduceStep} />
       )}
       {page === 4 && <Page4 />}
     </div>

@@ -4,6 +4,7 @@ import React from "react";
 export default function Page3({ increaseStep, reduseStep }) {
   const [step, setStep] = useState("");
   const [url, setUrl] = useState("");
+  const [date, setDate] = useState("");
 
   const handleInputChange = (e) => {
     const file = e.target.files[0];
@@ -12,6 +13,15 @@ export default function Page3({ increaseStep, reduseStep }) {
       setUrl(newUrl);
     }
   };
+
+  const handleInputDate = (e) => {
+    const dateValue = e.target.value;
+    setDate(dateValue);
+    console.log(dateValue);
+  };
+  // console date from onchange
+  // save to state date
+  // now - date = years
 
   return (
     <>
@@ -29,18 +39,14 @@ export default function Page3({ increaseStep, reduseStep }) {
               <p>Date of Birth</p>
               <span className="od">*</span>
             </div>
-            <input type="date" placeholder="xxa" src="" alt="add picture" />
+            <input type="date" onChange={handleInputDate} />
 
             <div>
               <p3>Profile image</p3>
               <span className="od">*</span>
             </div>
             <input type="file" className="pic" onChange={handleInputChange} />
-            <img
-              src={url}
-              alt="your image"
-              style={{ width: "100%", borderRadius: "8px" }}
-            />
+            <img src={url} alt="Add Photo" className="img" />
           </div>
 
           <div className="buttons">
