@@ -4,6 +4,7 @@ import "./App.css";
 import Page1 from "./step1";
 import Page2 from "./step2";
 import Page3 from "./step3";
+import Page4 from "./step4";
 
 export function Step() {
   const [page, setPage] = useState(1);
@@ -22,6 +23,7 @@ export function Step() {
       {page === 3 && (
         <Page3 increaseStep={increaseStep} reduceStep={reduceStep} />
       )}
+      {page === 4 && <Page4 />}
     </div>
   );
 }

@@ -3,6 +3,15 @@ import React from "react";
 
 export default function Page3({ increaseStep, reduseStep }) {
   const [step, setStep] = useState("");
+  const [url, setUrl] = useState("");
+
+  const handleInputChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const newUrl = URL.createObjectURL(file);
+      setUrl(newUrl);
+    }
+  };
 
   return (
     <>
@@ -16,14 +25,22 @@ export default function Page3({ increaseStep, reduseStep }) {
             </p>
           </div>
           <div className="inputs">
-            <p3>Date of Birth</p3>
-            <input type="date" placeholder="" />
+            <div className="flex">
+              <p>Date of Birth</p>
+              <span className="od">*</span>
+            </div>
+            <input type="date" placeholder="xxa" src="" alt="add picture" />
 
             <div>
               <p3>Profile image</p3>
               <span className="od">*</span>
             </div>
-            <input type="image" className="pic" />
+            <input type="file" className="pic" onChange={handleInputChange} />
+            <img
+              src={url}
+              alt="your image"
+              style={{ width: "100%", borderRadius: "8px" }}
+            />
           </div>
 
           <div className="buttons">

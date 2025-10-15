@@ -8,32 +8,52 @@ export default function Page1({ increaseStep }) {
   const [user, setUser] = useState("");
   const nameRegex = /^[a-zA-Z]+$/;
 
-  const [firsterror, setFirsterror] = useState("");
-  const [lasterror, setLasterror] = useState("");
-  const [usererror, setUsererror] = useState("");
+  const [firstError, setFirstError] = useState("");
+  const [lastError, setLastError] = useState("");
+  const [userError, setUserError] = useState("");
 
-  const handleFirst = () => {
-    if (!nameRegex.test(first)) {
-      setFirsterror("First name cannot contain special characters or numbers.");
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    if (name === "first") {
+      setFirst(value);
+    } else if (name === "last") {
+      setLast(value);
     } else {
-      setFirsterror("");
+      setUser(value);
     }
   };
-  const handleLast = () => {
-    if (!nameRegex.test(last)) {
-      setLasterror("Last name cannot contain special characters or numbers.");
-    } else {
-      setLasterror("");
+  const handeErrors = () => {
+    const errors = {};
+    if (!nameRegex.test(first) || first.length === 0) {
+      errors.first = "Last name cannot contain special characters or numbers.";
     }
-  };
-  const handleUser = () => {
-    if (!nameRegex.test(user)) {
-      setUsererror("Username can only contain letters.");
-    } else {
-      setUsererror("");
+    if (!nameRegex.test(last) || last.length === 0) {
+      errors.last = "Last name cannot contain special characters or numbers.";
     }
+    if (!nameRegex.test(user) || user.length === 0) {
+      errors.user =
+        "This username is already taken. Please choose another one.";
+    }
+
+    setFirstError(errors.first || "");
+    setLastError(errors.last || "");
+    setUserError(errors.user || "");
+
+    return errors;
   };
 
+  const handleSubmitButton = () => {
+    const errors = handeErrors();
+
+    console.log(errors);
+
+    if (Object.keys(errors).length > 0) {
+      return;
+    } else {
+      increaseStep();
+    }
+  };
   return (
     <>
       <div className="container">
@@ -46,38 +66,46 @@ export default function Page1({ increaseStep }) {
             </p>
           </div>
           <div className="inputs">
-            <h5>Firstname</h5>
+            <div className="flex">
+              <h5>Firstname</h5>
+              <span className="od">*</span>
+            </div>
             <input
               type="text"
+              name="first"
               placeholder="placeholder"
               value={first}
-              onChange={(e) => {
-                setFirst(e.target.value), handleFirst();
-              }}
+              onChange={handleInputChange}
             />
-            {firsterror && <div className="error-message">{firsterror}</div>}
-            <p>Lastname</p>
+            {firstError && <div className="od">{firstError}</div>}
+            <div className="flex">
+              <p>Lastname</p>
+              <span className="od">*</span>
+            </div>
             <input
               type="text"
+              name="last"
               placeholder="placeholder"
               value={last}
-              onChange={(e) => {
-                setLast(e.target.value), handleLast();
-              }}
+              onChange={handleInputChange}
             />
-            {lasterror && <div className="error-message">{lasterror}</div>}
-            <p>Username</p>
+            {lastError && <div className="od">{lastError}</div>}
+            <div className="flex">
+              <p>Username</p>
+              <span className="od">*</span>
+            </div>
             <input
               type="text"
+              name="user"
               pattern="[A-Z]"
               placeholder="placeholder"
               value={user}
-              onChange={(e) => setUser(e.target.value)}
+              onChange={handleInputChange}
             />
-            {usererror && <div className="error-message">{usererror}</div>}
+            {userError && <div className="od">{userError}</div>}
           </div>
           <div>
-            <button className="button" onClick={increaseStep}>
+            <button className="button" onClick={handleSubmitButton}>
               Continue 1/3{" "}
             </button>
           </div>
