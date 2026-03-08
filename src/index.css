@@ -1,0 +1,55 @@
+@import "tailwindcss";
+.background {
+  @apply max-w-screen h-screen mx-0 my-auto p-4 text-center flex justify-center items-center bg-[#f4f4f4];
+}
+.container {
+  @apply flex flex-col w-120 min-h-[655px] rounded-lg bg-white p-8 justify-between;
+}
+.joinUs {
+  @apply text-[#202124] text-shadow-[0_4px_4px_rgb(0_0_0_/_0.25)] text-[26px]/[normal] tracking-[-0.78px] font-semibold font-[Inter];
+}
+.description {
+  @apply text-[#8e8e8e] text-center text-lg/[normal] font-normal;
+}
+.inputBigDiv {
+  @apply flex flex-col items-start self-stretch my-0 mx-auto gap-2;
+}
+.inputTitle {
+  @apply text-[#334155] text-sm/4 font-semibold tracking-[-0.14px] pr-[5px] font-[Inter];
+}
+.star {
+  @apply text-[#e14942] text-sm/4 font-semibold tracking-[-0.14px] font-[Inter];
+}
+.input {
+  @apply flex items-center self-stretch p-3 rounded-lg border focus:border-[#0CA5E9] focus:border outline-none w-104 border-[#CBD5E1];
+}
+.continueBtn {
+  @apply flex justify-center items-center gap-1 py-[10px] px-3 rounded-md bg-[#121316] text-white mt-[30px] cursor-pointer;
+}
+.continueBtn:hover {
+  opacity: 0.8;
+}
+.backBtn {
+  @apply flex justify-center items-center w-32 h-11 px-2.5 py-3 gap-1 rounded-md border border-[#CBD5E1] bg-white mt-auto cursor-pointer;
+}
+.backBtn:hover {
+  @apply bg-[#f3f4f6];
+}
+.imageInput {
+  @apply flex flex-col justify-center items-center w-104 h-45 min-h-20 p-4 gap-2 rounded-md bg-[rgba(127_127_128_/0.05)] border-none overflow-hidden;
+}
+.error-message {
+  @apply text-[#E14942] text-sm font-normal;
+}
+.borderGray {
+  @apply border border-[#CBD5E1];
+}
+.borderRed {
+  @apply border border-[#E14942];
+}
+
+.input::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  right: 12px;
+  position: absolute;
+}
